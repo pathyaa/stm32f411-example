@@ -66,7 +66,19 @@ enum
 
 bool isButtonClicked(void)
 {
+  static uint8_t step = 0;
 
+  switch (step)
+  {
+    case IDLE:
+    break;
+    case PRESSED_CHECK:
+    break;
+    case PRESSED:
+    break;
+    case RELEASED_CHECK:
+break;  
+  }
 }
 /* USER CODE END 0 */
 
