@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdbool.h>
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -63,8 +63,7 @@ void Error_Handler(void);
 #define BTN_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
-#define HIGH    1
-#define LOW     0
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

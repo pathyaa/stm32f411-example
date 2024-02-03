@@ -3,7 +3,7 @@
         {
             "showDevDebugOutput": "parsed",
             "cwd": "${workspaceRoot}",
-            "executable": "./build/ex01-button.elf",
+            "executable": "./build/ex01-led.elf",
             "name": "Debug STM32",
             "request": "launch",
             "type": "cortex-debug",
@@ -17,7 +17,7 @@
         {
             "showDevDebugOutput": "parsed",
             "cwd": "${workspaceRoot}",
-            "executable": "./build/ex01-button.elf",
+            "executable": "./build/ex01-led.elf",
             "name": "Attach STM32",
             "request": "attach",
             "type": "cortex-debug",

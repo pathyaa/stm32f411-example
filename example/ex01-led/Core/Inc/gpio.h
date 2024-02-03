@@ -39,12 +39,7 @@ extern "C" {
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-enum
-{
-  LED,
-  BTN,
-  GPIO_MAX
-};
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

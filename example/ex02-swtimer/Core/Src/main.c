@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdbool.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,8 +32,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define HIGH    1
-#define LOW     0
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -55,199 +54,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-enum
-{
-	IDLE,
-	PRESSED_CHECK,
-	PRESSED,
-	RELEASED_CHECK,
-	RELEASED
-};
 
-enum
-{
-  LED,
-  BTN,
-  GPIO_MAX
-};
-
-bool gpioWrite(uint8_t pin, uint8_t pin_state)
-{
-  switch (pin)
-  {
-    
-    case LED:
-      if (pin_state == HIGH)
-      {
-        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-        return true;
-      }
-      else if (pin_state == LOW)
-      {
-        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-        return true;
-      }
-    break;
-    case BTN:
-      if (pin_state == HIGH)
-      {
-        HAL_GPIO_WritePin(BTN_GPIO_Port, BTN_Pin, GPIO_PIN_SET);
-        return true;
-      }
-      else if (pin_state == LOW)
-      {
-        HAL_GPIO_WritePin(BTN_GPIO_Port, BTN_Pin, GPIO_PIN_RESET);
-        return true;
-      }
-    break;
-  }
-  return false;
-}
-
-bool gpioRead(uint8_t pin)
-{
-  bool ret = false;
-  switch (pin)
-  {
-    case LED:
-    if (HAL_GPIO_ReadPin(LED_GPIO_Port, LED_Pin) == GPIO_PIN_SET)
-    {
-      ret = HIGH;
-    }
-    else if (HAL_GPIO_ReadPin(LED_GPIO_Port, LED_Pin) == GPIO_PIN_RESET)
-    {
-      ret = LOW;
-    }
-    break;
-    case BTN:
-    if (HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_SET)
-    {
-      ret = HIGH;
-    }
-    else if (HAL_GPIO_ReadPin(BTN_GPIO_Port, BTN_Pin) == GPIO_PIN_RESET)
-    {
-      ret = LOW;
-    }
-    break;
-  }
-  return ret;
-}
-
-bool isButtonClicked(void)
-{
-  static uint8_t step = 0;
-  static uint32_t tick = 0;
-  static bool isPressed = false;
-  bool ret = false;
-
-  switch (step)
-  {
-    case IDLE:
-      if (gpioRead(BTN) == HIGH)
-      {
-        step = RELEASED_CHECK;
-        tick = HAL_GetTick();
-      }
-      else if (gpioRead(BTN) == LOW)
-      {
-        tick = HAL_GetTick();
-        step = PRESSED_CHECK;
-      }
-    break;
-    case PRESSED_CHECK:
-    if (HAL_GetTick() - tick >= 20)
-    {
-      if (gpioRead(BTN) == LOW)
-      {
-        isPressed = true;
-        step = PRESSED;
-      }
-      else
-      {
-        step = RELEASED_CHECK;
-        tick = HAL_GetTick();
-      }
-    }
-    break;
-    case PRESSED:
-    if (gpioRead(BTN) == HIGH)
-    {
-      tick = HAL_GetTick();
-      step = RELEASED_CHECK;
-    }
-    break;
-    case RELEASED_CHECK:
-    if (HAL_GetTick() - tick >= 20)
-    {
-      if (!isPressed)
-      {
-        if (gpioRead(BTN) == HIGH)
-        {
-          step = IDLE;
-        }
-        else if (gpioRead(BTN) == LOW)
-        {
-          tick = HAL_GetTick();
-          step = PRESSED_CHECK;
-        }
-      }
-      else 
-      {
-        isPressed = false;
-        if (gpioRead(BTN) == HIGH)
-        {
-          step = RELEASED;
-        }
-        else
-        {
-          tick = HAL_GetTick();
-          step = PRESSED_CHECK;
-        }
-      }
-      
-    }
-    break;
-    case RELEASED:
-    step = IDLE;
-    ret = true;
-    break;
-  }
-  return ret;
-}
-
-bool gpioToggle(uint8_t pin)
-{
-  bool ret = false;
-
-  switch (pin)
-  {
-    case LED:
-    if (gpioRead(LED) == HIGH)
-    {
-      gpioWrite(LED, LOW);
-      ret = true;
-    }
-    else if (gpioRead(LED) == LOW)
-    {
-      gpioWrite(LED, HIGH);
-      ret = true;
-    }
-    break;
-    case BTN:
-    if (gpioRead(BTN) == HIGH)
-    {
-      gpioWrite(BTN, LOW);
-      ret = true;
-    }
-    else if (gpioRead(BTN) == LOW)
-    {
-      gpioWrite(BTN, HIGH);
-      ret = true;
-    }
-    break;
-  }
-  return ret;
-}
 /* USER CODE END 0 */
 
 /**
@@ -286,10 +93,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if (isButtonClicked())
-    {
-      gpioToggle(LED);
-    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

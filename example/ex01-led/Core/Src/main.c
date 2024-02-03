@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -56,10 +55,6 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-
-
-
-
 /* USER CODE END 0 */
 
 /**
@@ -90,7 +85,6 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -99,10 +93,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if (isButtonClicked())
-    {
-      gpioToggle(LED);
-    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
