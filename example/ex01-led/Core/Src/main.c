@@ -22,12 +22,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define HIGH  1
+#define LOW   0
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -54,7 +55,58 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+enum
+{
+  GPIO_PIN_LED = 0,
+  GPIO_PIN_BTN,
+  GPIO_PIN_MAX
+};
 
+void gpioWrite(uint8_t pin, bool pin_state)
+{
+  if (pin == GPIO_PIN_LED)
+  {
+    if (pin_state == HIGH)
+    {
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+    }
+    else if (pin_state == LOW)
+    {
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+    }
+  }
+}
+
+uint8_t gpioRead(uint8_t pin)
+{
+  if (pin == GPIO_PIN_LED)
+  {
+    if (HAL_GPIO_ReadPin(LED_GPIO_Port, LED_Pin) == GPIO_PIN_SET)
+    {
+      return HIGH;
+    }
+    else if (HAL_GPIO_ReadPin(LED_GPIO_Port, LED_Pin) == GPIO_PIN_RESET)
+    {
+      return LOW;
+    }
+  }
+  return 2; // invalid value
+}
+
+void gpioToggle(uint8_t pin)
+{
+  if (pin == GPIO_PIN_LED)
+  {
+    if (gpioRead(GPIO_PIN_LED) == HIGH)
+    {
+      gpioWrite(GPIO_PIN_LED, LOW);
+    }
+    else if (gpioRead(GPIO_PIN_LED) == LOW)
+    {
+      gpioWrite(GPIO_PIN_LED, HIGH);
+    }
+  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -86,13 +138,17 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    gpioWrite(GPIO_PIN_LED, HIGH);
+    HAL_Delay(9);
+    gpioWrite(GPIO_PIN_LED, LOW);
+    HAL_Delay(1);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -3,13 +3,13 @@
         {
             "showDevDebugOutput": "parsed",
             "cwd": "${workspaceRoot}",
-            "executable": "./build/ex01-led.elf",
+            "executable": "./build/.elf",
             "name": "Debug STM32",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
             "preLaunchTask": "Build STM",
-            "device": "stm32f411xe.s",
+            "device": "",
             "configFiles": [
                 "openocd.cfg"
             ]
@@ -17,13 +17,13 @@
         {
             "showDevDebugOutput": "parsed",
             "cwd": "${workspaceRoot}",
-            "executable": "./build/ex01-led.elf",
+            "executable": "./build/.elf",
             "name": "Attach STM32",
             "request": "attach",
             "type": "cortex-debug",
             "servertype": "openocd",
             "preLaunchTask": "Build STM",
-            "device": "stm32f411xe.s",
+            "device": "",
             "configFiles": [
                 "openocd.cfg"
             ]
