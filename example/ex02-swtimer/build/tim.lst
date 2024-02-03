@@ -1,0 +1,358 @@
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"tim.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/tim.c"
+  20              		.section	.text.MX_TIM11_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MX_TIM11_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	MX_TIM11_Init:
+  28              	.LFB134:
+   1:Core/Src/tim.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/tim.c **** /**
+   3:Core/Src/tim.c ****   ******************************************************************************
+   4:Core/Src/tim.c ****   * @file    tim.c
+   5:Core/Src/tim.c ****   * @brief   This file provides code for the configuration
+   6:Core/Src/tim.c ****   *          of the TIM instances.
+   7:Core/Src/tim.c ****   ******************************************************************************
+   8:Core/Src/tim.c ****   * @attention
+   9:Core/Src/tim.c ****   *
+  10:Core/Src/tim.c ****   * Copyright (c) 2024 STMicroelectronics.
+  11:Core/Src/tim.c ****   * All rights reserved.
+  12:Core/Src/tim.c ****   *
+  13:Core/Src/tim.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/tim.c ****   * in the root directory of this software component.
+  15:Core/Src/tim.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/tim.c ****   *
+  17:Core/Src/tim.c ****   ******************************************************************************
+  18:Core/Src/tim.c ****   */
+  19:Core/Src/tim.c **** /* USER CODE END Header */
+  20:Core/Src/tim.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/tim.c **** #include "tim.h"
+  22:Core/Src/tim.c **** 
+  23:Core/Src/tim.c **** /* USER CODE BEGIN 0 */
+  24:Core/Src/tim.c **** 
+  25:Core/Src/tim.c **** /* USER CODE END 0 */
+  26:Core/Src/tim.c **** 
+  27:Core/Src/tim.c **** TIM_HandleTypeDef htim11;
+  28:Core/Src/tim.c **** 
+  29:Core/Src/tim.c **** /* TIM11 init function */
+  30:Core/Src/tim.c **** void MX_TIM11_Init(void)
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 2
+
+
+  31:Core/Src/tim.c **** {
+  29              		.loc 1 31 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  32:Core/Src/tim.c **** 
+  33:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_Init 0 */
+  34:Core/Src/tim.c **** 
+  35:Core/Src/tim.c ****   /* USER CODE END TIM11_Init 0 */
+  36:Core/Src/tim.c **** 
+  37:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_Init 1 */
+  38:Core/Src/tim.c **** 
+  39:Core/Src/tim.c ****   /* USER CODE END TIM11_Init 1 */
+  40:Core/Src/tim.c ****   htim11.Instance = TIM11;
+  37              		.loc 1 40 3 view .LVU1
+  38              		.loc 1 40 19 is_stmt 0 view .LVU2
+  39 0002 0948     		ldr	r0, .L5
+  40 0004 094B     		ldr	r3, .L5+4
+  41 0006 0360     		str	r3, [r0]
+  41:Core/Src/tim.c ****   htim11.Init.Prescaler = 100-1;
+  42              		.loc 1 41 3 is_stmt 1 view .LVU3
+  43              		.loc 1 41 25 is_stmt 0 view .LVU4
+  44 0008 6323     		movs	r3, #99
+  45 000a 4360     		str	r3, [r0, #4]
+  42:Core/Src/tim.c ****   htim11.Init.CounterMode = TIM_COUNTERMODE_UP;
+  46              		.loc 1 42 3 is_stmt 1 view .LVU5
+  47              		.loc 1 42 27 is_stmt 0 view .LVU6
+  48 000c 0023     		movs	r3, #0
+  49 000e 8360     		str	r3, [r0, #8]
+  43:Core/Src/tim.c ****   htim11.Init.Period = 1000-1;
+  50              		.loc 1 43 3 is_stmt 1 view .LVU7
+  51              		.loc 1 43 22 is_stmt 0 view .LVU8
+  52 0010 40F2E732 		movw	r2, #999
+  53 0014 C260     		str	r2, [r0, #12]
+  44:Core/Src/tim.c ****   htim11.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  54              		.loc 1 44 3 is_stmt 1 view .LVU9
+  55              		.loc 1 44 29 is_stmt 0 view .LVU10
+  56 0016 0361     		str	r3, [r0, #16]
+  45:Core/Src/tim.c ****   htim11.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  57              		.loc 1 45 3 is_stmt 1 view .LVU11
+  58              		.loc 1 45 33 is_stmt 0 view .LVU12
+  59 0018 8361     		str	r3, [r0, #24]
+  46:Core/Src/tim.c ****   if (HAL_TIM_Base_Init(&htim11) != HAL_OK)
+  60              		.loc 1 46 3 is_stmt 1 view .LVU13
+  61              		.loc 1 46 7 is_stmt 0 view .LVU14
+  62 001a FFF7FEFF 		bl	HAL_TIM_Base_Init
+  63              	.LVL0:
+  64              		.loc 1 46 6 discriminator 1 view .LVU15
+  65 001e 00B9     		cbnz	r0, .L4
+  66              	.L1:
+  47:Core/Src/tim.c ****   {
+  48:Core/Src/tim.c ****     Error_Handler();
+  49:Core/Src/tim.c ****   }
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 3
+
+
+  50:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_Init 2 */
+  51:Core/Src/tim.c **** 
+  52:Core/Src/tim.c ****   /* USER CODE END TIM11_Init 2 */
+  53:Core/Src/tim.c **** 
+  54:Core/Src/tim.c **** }
+  67              		.loc 1 54 1 view .LVU16
+  68 0020 08BD     		pop	{r3, pc}
+  69              	.L4:
+  48:Core/Src/tim.c ****   }
+  70              		.loc 1 48 5 is_stmt 1 view .LVU17
+  71 0022 FFF7FEFF 		bl	Error_Handler
+  72              	.LVL1:
+  73              		.loc 1 54 1 is_stmt 0 view .LVU18
+  74 0026 FBE7     		b	.L1
+  75              	.L6:
+  76              		.align	2
+  77              	.L5:
+  78 0028 00000000 		.word	htim11
+  79 002c 00480140 		.word	1073825792
+  80              		.cfi_endproc
+  81              	.LFE134:
+  83              		.section	.text.HAL_TIM_Base_MspInit,"ax",%progbits
+  84              		.align	1
+  85              		.global	HAL_TIM_Base_MspInit
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  90              	HAL_TIM_Base_MspInit:
+  91              	.LVL2:
+  92              	.LFB135:
+  55:Core/Src/tim.c **** 
+  56:Core/Src/tim.c **** void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
+  57:Core/Src/tim.c **** {
+  93              		.loc 1 57 1 is_stmt 1 view -0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 8
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  58:Core/Src/tim.c **** 
+  59:Core/Src/tim.c ****   if(tim_baseHandle->Instance==TIM11)
+  97              		.loc 1 59 3 view .LVU20
+  98              		.loc 1 59 20 is_stmt 0 view .LVU21
+  99 0000 0268     		ldr	r2, [r0]
+ 100              		.loc 1 59 5 view .LVU22
+ 101 0002 0E4B     		ldr	r3, .L14
+ 102 0004 9A42     		cmp	r2, r3
+ 103 0006 00D0     		beq	.L13
+ 104 0008 7047     		bx	lr
+ 105              	.L13:
+  57:Core/Src/tim.c **** 
+ 106              		.loc 1 57 1 view .LVU23
+ 107 000a 00B5     		push	{lr}
+ 108              		.cfi_def_cfa_offset 4
+ 109              		.cfi_offset 14, -4
+ 110 000c 83B0     		sub	sp, sp, #12
+ 111              		.cfi_def_cfa_offset 16
+  60:Core/Src/tim.c ****   {
+  61:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspInit 0 */
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 4
+
+
+  62:Core/Src/tim.c **** 
+  63:Core/Src/tim.c ****   /* USER CODE END TIM11_MspInit 0 */
+  64:Core/Src/tim.c ****     /* TIM11 clock enable */
+  65:Core/Src/tim.c ****     __HAL_RCC_TIM11_CLK_ENABLE();
+ 112              		.loc 1 65 5 is_stmt 1 view .LVU24
+ 113              	.LBB2:
+ 114              		.loc 1 65 5 view .LVU25
+ 115 000e 0021     		movs	r1, #0
+ 116 0010 0191     		str	r1, [sp, #4]
+ 117              		.loc 1 65 5 view .LVU26
+ 118 0012 03F57043 		add	r3, r3, #61440
+ 119 0016 5A6C     		ldr	r2, [r3, #68]
+ 120 0018 42F48022 		orr	r2, r2, #262144
+ 121 001c 5A64     		str	r2, [r3, #68]
+ 122              		.loc 1 65 5 view .LVU27
+ 123 001e 5B6C     		ldr	r3, [r3, #68]
+ 124 0020 03F48023 		and	r3, r3, #262144
+ 125 0024 0193     		str	r3, [sp, #4]
+ 126              		.loc 1 65 5 view .LVU28
+ 127 0026 019B     		ldr	r3, [sp, #4]
+ 128              	.LBE2:
+ 129              		.loc 1 65 5 view .LVU29
+  66:Core/Src/tim.c **** 
+  67:Core/Src/tim.c ****     /* TIM11 interrupt Init */
+  68:Core/Src/tim.c ****     HAL_NVIC_SetPriority(TIM1_TRG_COM_TIM11_IRQn, 0, 0);
+ 130              		.loc 1 68 5 view .LVU30
+ 131 0028 0A46     		mov	r2, r1
+ 132 002a 1A20     		movs	r0, #26
+ 133              	.LVL3:
+ 134              		.loc 1 68 5 is_stmt 0 view .LVU31
+ 135 002c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 136              	.LVL4:
+  69:Core/Src/tim.c ****     HAL_NVIC_EnableIRQ(TIM1_TRG_COM_TIM11_IRQn);
+ 137              		.loc 1 69 5 is_stmt 1 view .LVU32
+ 138 0030 1A20     		movs	r0, #26
+ 139 0032 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 140              	.LVL5:
+  70:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspInit 1 */
+  71:Core/Src/tim.c **** 
+  72:Core/Src/tim.c ****   /* USER CODE END TIM11_MspInit 1 */
+  73:Core/Src/tim.c ****   }
+  74:Core/Src/tim.c **** }
+ 141              		.loc 1 74 1 is_stmt 0 view .LVU33
+ 142 0036 03B0     		add	sp, sp, #12
+ 143              		.cfi_def_cfa_offset 4
+ 144              		@ sp needed
+ 145 0038 5DF804FB 		ldr	pc, [sp], #4
+ 146              	.L15:
+ 147              		.align	2
+ 148              	.L14:
+ 149 003c 00480140 		.word	1073825792
+ 150              		.cfi_endproc
+ 151              	.LFE135:
+ 153              		.section	.text.HAL_TIM_Base_MspDeInit,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	HAL_TIM_Base_MspDeInit
+ 156              		.syntax unified
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 5
+
+
+ 157              		.thumb
+ 158              		.thumb_func
+ 160              	HAL_TIM_Base_MspDeInit:
+ 161              	.LVL6:
+ 162              	.LFB136:
+  75:Core/Src/tim.c **** 
+  76:Core/Src/tim.c **** void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
+  77:Core/Src/tim.c **** {
+ 163              		.loc 1 77 1 is_stmt 1 view -0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		.loc 1 77 1 is_stmt 0 view .LVU35
+ 168 0000 08B5     		push	{r3, lr}
+ 169              		.cfi_def_cfa_offset 8
+ 170              		.cfi_offset 3, -8
+ 171              		.cfi_offset 14, -4
+  78:Core/Src/tim.c **** 
+  79:Core/Src/tim.c ****   if(tim_baseHandle->Instance==TIM11)
+ 172              		.loc 1 79 3 is_stmt 1 view .LVU36
+ 173              		.loc 1 79 20 is_stmt 0 view .LVU37
+ 174 0002 0268     		ldr	r2, [r0]
+ 175              		.loc 1 79 5 view .LVU38
+ 176 0004 064B     		ldr	r3, .L20
+ 177 0006 9A42     		cmp	r2, r3
+ 178 0008 00D0     		beq	.L19
+ 179              	.LVL7:
+ 180              	.L16:
+  80:Core/Src/tim.c ****   {
+  81:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspDeInit 0 */
+  82:Core/Src/tim.c **** 
+  83:Core/Src/tim.c ****   /* USER CODE END TIM11_MspDeInit 0 */
+  84:Core/Src/tim.c ****     /* Peripheral clock disable */
+  85:Core/Src/tim.c ****     __HAL_RCC_TIM11_CLK_DISABLE();
+  86:Core/Src/tim.c **** 
+  87:Core/Src/tim.c ****     /* TIM11 interrupt Deinit */
+  88:Core/Src/tim.c ****     HAL_NVIC_DisableIRQ(TIM1_TRG_COM_TIM11_IRQn);
+  89:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspDeInit 1 */
+  90:Core/Src/tim.c **** 
+  91:Core/Src/tim.c ****   /* USER CODE END TIM11_MspDeInit 1 */
+  92:Core/Src/tim.c ****   }
+  93:Core/Src/tim.c **** }
+ 181              		.loc 1 93 1 view .LVU39
+ 182 000a 08BD     		pop	{r3, pc}
+ 183              	.LVL8:
+ 184              	.L19:
+  85:Core/Src/tim.c **** 
+ 185              		.loc 1 85 5 is_stmt 1 view .LVU40
+ 186 000c 054A     		ldr	r2, .L20+4
+ 187 000e 536C     		ldr	r3, [r2, #68]
+ 188 0010 23F48023 		bic	r3, r3, #262144
+ 189 0014 5364     		str	r3, [r2, #68]
+  88:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspDeInit 1 */
+ 190              		.loc 1 88 5 view .LVU41
+ 191 0016 1A20     		movs	r0, #26
+ 192              	.LVL9:
+  88:Core/Src/tim.c ****   /* USER CODE BEGIN TIM11_MspDeInit 1 */
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 6
+
+
+ 193              		.loc 1 88 5 is_stmt 0 view .LVU42
+ 194 0018 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 195              	.LVL10:
+ 196              		.loc 1 93 1 view .LVU43
+ 197 001c F5E7     		b	.L16
+ 198              	.L21:
+ 199 001e 00BF     		.align	2
+ 200              	.L20:
+ 201 0020 00480140 		.word	1073825792
+ 202 0024 00380240 		.word	1073887232
+ 203              		.cfi_endproc
+ 204              	.LFE136:
+ 206              		.global	htim11
+ 207              		.section	.bss.htim11,"aw",%nobits
+ 208              		.align	2
+ 211              	htim11:
+ 212 0000 00000000 		.space	72
+ 212      00000000 
+ 212      00000000 
+ 212      00000000 
+ 212      00000000 
+ 213              		.text
+ 214              	.Letext0:
+ 215              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"
+ 216              		.file 3 "C:/Users/onste/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 217              		.file 4 "C:/Users/onste/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 218              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 219              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 220              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 221              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 222              		.file 9 "Core/Inc/tim.h"
+ 223              		.file 10 "Core/Inc/main.h"
+ARM GAS  C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 tim.c
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:21     .text.MX_TIM11_Init:00000000 $t
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:27     .text.MX_TIM11_Init:00000000 MX_TIM11_Init
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:78     .text.MX_TIM11_Init:00000028 $d
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:211    .bss.htim11:00000000 htim11
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:84     .text.HAL_TIM_Base_MspInit:00000000 $t
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:90     .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:149    .text.HAL_TIM_Base_MspInit:0000003c $d
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:154    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:160    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:201    .text.HAL_TIM_Base_MspDeInit:00000020 $d
+C:\Users\onste\AppData\Local\Temp\ccRXoN8u.s:208    .bss.htim11:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_TIM_Base_Init
+Error_Handler
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_NVIC_DisableIRQ
