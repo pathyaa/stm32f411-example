@@ -1,1 +1,3 @@
-example/*/build
+example/ex01-led/build
+example/ex02-swtimer/build
+example/ex01-button/build
